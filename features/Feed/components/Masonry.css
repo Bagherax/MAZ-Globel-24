@@ -1,0 +1,27 @@
+.list {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  transition: height 0.5s ease-in-out;
+}
+
+.item-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  will-change: transform, filter;
+  padding: 0; /* Override column-gap spacing */
+  margin: 8px; /* Spacing handled by JS positioning and width calc */
+}
+
+.item-img {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+}

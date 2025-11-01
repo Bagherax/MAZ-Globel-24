@@ -1,0 +1,26 @@
+[
+  {
+    "id": "trade_001",
+    "itemName": "Collectible Action Figure",
+    "price": "85.00",
+    "timestamp": "2m ago",
+    "buyer": "User123",
+    "seller": "CollectorX"
+  },
+  {
+    "id": "trade_002",
+    "itemName": "First Edition Novel",
+    "price": "250.00",
+    "timestamp": "5m ago",
+    "buyer": "Bookworm",
+    "seller": "RareFinds"
+  },
+  {
+    "id": "trade_003",
+    "itemName": "Limited Edition Sneakers",
+    "price": "320.00",
+    "timestamp": "8m ago",
+    "buyer": "SneakerHead",
+    "seller": "KicksCo"
+  }
+]

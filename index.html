@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MAZDADY P2P Marketplace</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style type="text/tailwindcss">
+      @layer base {
+        :root {
+          --maz-bg: 255 255 255;
+          --maz-surface: 249 250 251;
+          --maz-primary: 59 130 246;
+          --maz-secondary: 109 40 217;
+          --maz-text: 17 24 39;
+          --maz-text-secondary: 107 114 128;
+        }
+        .dark {
+          --maz-bg: 17 24 39;
+          --maz-surface: 31 41 55;
+          --maz-primary: 59 130 246;
+          --maz-secondary: 109 40 217;
+          --maz-text: 249 250 251;
+          --maz-text-secondary: 156 163 175;
+        }
+        body {
+          @apply transition-colors duration-300;
+        }
+      }
+    </style>
+    <script>
+      // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              'maz-bg': 'rgb(var(--maz-bg) / <alpha-value>)',
+              'maz-surface': 'rgb(var(--maz-surface) / <alpha-value>)',
+              'maz-primary': 'rgb(var(--maz-primary) / <alpha-value>)',
+              'maz-secondary': 'rgb(var(--maz-secondary) / <alpha-value>)',
+              'maz-text': 'rgb(var(--maz-text) / <alpha-value>)',
+              'maz-text-secondary': 'rgb(var(--maz-text-secondary) / <alpha-value>)'
+            }
+          }
+        }
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "gsap": "https://aistudiocdn.com/gsap@^3.13.0"
+  }
+}
+</script>
+</head>
+  <body class="bg-maz-bg text-maz-text">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+[
+  {
+    "id": "auc_001",
+    "itemName": "Antique Pocket Watch",
+    "imageUrl": "https://images.unsplash.com/photo-1533139502658-0198f920d8e8?w=500",
+    "currentBid": "475.00",
+    "timeLeft": "2h 15m"
+  },
+  {
+    "id": "auc_002",
+    "itemName": "Signed Football Jersey",
+    "imageUrl": "https://images.unsplash.com/photo-1598214013589-3252a704e116?w=500",
+    "currentBid": "950.00",
+    "timeLeft": "1d 4h"
+  }
+]

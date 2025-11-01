@@ -1,0 +1,24 @@
+[
+  {
+    "id": "paid_001",
+    "title": "Brand New Smartwatch Series 8",
+    "price": "399.00",
+    "imageUrl": "https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=500",
+    "user": {
+      "name": "TechDeals Inc.",
+      "avatarUrl": "https://i.pravatar.cc/48?u=techdeals"
+    },
+    "sponsored": true
+  },
+  {
+    "id": "paid_002",
+    "title": "Pro-Grade Mechanical Keyboard",
+    "price": "150.00",
+    "imageUrl": "https://images.unsplash.com/photo-1618384887924-3366ab1bc427?w=500",
+    "user": {
+      "name": "Gamer's Hub",
+      "avatarUrl": "https://i.pravatar.cc/48?u=gamershub"
+    },
+    "sponsored": true
+  }
+]

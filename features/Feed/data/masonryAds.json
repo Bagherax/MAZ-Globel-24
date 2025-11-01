@@ -1,0 +1,62 @@
+[
+  {
+    "id": "ad_001",
+    "title": "Handcrafted Leather Wallet",
+    "price": "45.00",
+    "imageUrl": "https://images.unsplash.com/photo-1599481238640-4c12727c3c85?w=500",
+    "user": {
+      "name": "Alex Smith",
+      "avatarUrl": "https://randomuser.me/api/portraits/men/32.jpg"
+    }
+  },
+  {
+    "id": "ad_002",
+    "title": "Vintage Film Camera",
+    "price": "120.00",
+    "imageUrl": "https://images.unsplash.com/photo-1516739433432-9210ac010a30?w=500",
+    "user": {
+      "name": "Jane Doe",
+      "avatarUrl": "https://randomuser.me/api/portraits/women/44.jpg"
+    }
+  },
+  {
+    "id": "ad_003",
+    "title": "Minimalist Desk Lamp",
+    "price": "75.00",
+    "imageUrl": "https://images.unsplash.com/photo-1543350949-34b863a3d548?w=500",
+    "user": {
+      "name": "Sam Wilson",
+      "avatarUrl": "https://randomuser.me/api/portraits/men/4.jpg"
+    }
+  },
+  {
+    "id": "ad_004",
+    "title": "Ceramic Plant Pot Set",
+    "price": "35.00",
+    "imageUrl": "https://images.unsplash.com/photo-1592205869220-15c8227096a5?w=500",
+    "user": {
+      "name": "Emily Carter",
+      "avatarUrl": "https://randomuser.me/api/portraits/women/68.jpg"
+    }
+  },
+  {
+    "id": "ad_005",
+    "title": "Wireless Noise-Cancelling Headphones",
+    "price": "199.99",
+    "imageUrl": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500",
+    "user": {
+      "name": "Chris Johnson",
+      "avatarUrl": "https://randomuser.me/api/portraits/men/5.jpg"
+    }
+  },
+  {
+    "id": "ad_006",
+    "title": "Gourmet Coffee Beans",
+    "price": "22.50",
+    "imageUrl": "https://images.unsplash.com/photo-1559494007-50572c575695?w=500",
+    "user": {
+      "name": "Olivia Martinez",
+      "avatarUrl": "https://randomuser.me/api/portraits/women/11.jpg"
+    }
+  }
+]
