@@ -9,6 +9,7 @@ export const ads: AdItem[] = [
     link: '#',
     type: 'internal',
     alt: 'Vintage camera on a stack of books',
+    size: 'medium',
   },
   {
     id: 2,
@@ -16,6 +17,7 @@ export const ads: AdItem[] = [
     link: '#',
     type: 'internal',
     alt: 'Red and black running shoe',
+    size: 'large',
   },
   {
     id: 3,
@@ -23,6 +25,7 @@ export const ads: AdItem[] = [
     link: '#',
     type: 'internal',
     alt: 'Black headphones on a yellow background',
+    size: 'small',
   },
   {
     id: 4,
@@ -30,6 +33,7 @@ export const ads: AdItem[] = [
     link: '#',
     type: 'external',
     alt: 'Stylish sunglasses on a pink and blue background',
+    size: 'medium',
   },
   {
     id: 5,
@@ -37,5 +41,6 @@ export const ads: AdItem[] = [
     link: '#',
     type: 'external',
     alt: 'White instant camera with a photo coming out',
+    size: 'large',
   },
 ];

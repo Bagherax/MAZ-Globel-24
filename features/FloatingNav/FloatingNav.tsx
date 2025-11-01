@@ -3,6 +3,7 @@ import { gsap } from 'gsap';
 
 interface FloatingNavProps {
   onTradingClick: () => void;
+  onChatClick: () => void;
   onAdSizeChange: (size: 'small' | 'medium' | 'large') => void;
   onThemeToggle: () => void;
   onSortChange: (option: string) => void;
@@ -37,7 +38,7 @@ const addAdsTools: {id: string, label: string, icon: React.ReactNode}[] = [
 ];
 
 
-const FloatingNav: React.FC<FloatingNavProps> = ({ onTradingClick, onAdSizeChange, onThemeToggle, onSortChange }) => {
+const FloatingNav: React.FC<FloatingNavProps> = ({ onTradingClick, onChatClick, onAdSizeChange, onThemeToggle, onSortChange }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isAddAdsOpen, setIsAddAdsOpen] = useState(false);
@@ -61,6 +62,12 @@ const FloatingNav: React.FC<FloatingNavProps> = ({ onTradingClick, onAdSizeChang
   const handleTradingClick = (e: React.MouseEvent) => {
     e.preventDefault();
     onTradingClick();
+    setIsOpen(false); // Close menu after action
+  };
+  
+  const handleChatClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    onChatClick();
     setIsOpen(false); // Close menu after action
   };
 
@@ -233,13 +240,13 @@ const FloatingNav: React.FC<FloatingNavProps> = ({ onTradingClick, onAdSizeChang
         </a>
 
         {/* Chat */}
-        <a href="#" aria-label="Chat" className={`absolute transform left-1/2 -translate-x-1/2 transition-all duration-500 ease-[cubic-bezier(0.68,-0.55,0.27,1.55)] delay-[200ms] ${mainVerticalMenuVisible ? 'opacity-100 -translate-y-[20rem]' : 'opacity-0 translate-y-0 pointer-events-none'}`}>
+        <button onClick={handleChatClick} aria-label="Chat" className={`absolute transform left-1/2 -translate-x-1/2 transition-all duration-500 ease-[cubic-bezier(0.68,-0.55,0.27,1.55)] delay-[200ms] ${mainVerticalMenuVisible ? 'opacity-100 -translate-y-[20rem]' : 'opacity-0 translate-y-0 pointer-events-none'}`}>
           <div className={buttonClasses}>
             <svg className={iconClasses} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
             </svg>
           </div>
-        </a>
+        </button>
 
         {/* Add Ads Group */}
         <div className={`absolute transform left-1/2 -translate-x-1/2 transition-all duration-500 ease-[cubic-bezier(0.68,-0.55,0.27,1.55)] delay-[150ms] ${addAdsContainerClass}`}>

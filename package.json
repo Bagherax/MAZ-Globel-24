@@ -11,7 +11,8 @@
   "dependencies": {
     "react-dom": "^19.2.0",
     "react": "^19.2.0",
-    "gsap": "^3.13.0"
+    "gsap": "^3.13.0",
+    "framer-motion": "^11.2.10"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",

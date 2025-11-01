@@ -4,4 +4,5 @@ export interface AdItem {
   link: string;
   type: 'internal' | 'external';
   alt: string;
+  size: 'small' | 'medium' | 'large';
 }

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import useFeedComposer from './hooks/useFeedComposer';
 import FeedCard from './components/FeedCard';
-import Masonry from './components/Masonry';
 import { FeedItem, FeedItemData } from './types';
 
 interface FeedContainerProps {
@@ -53,6 +52,7 @@ const FeedContainer: React.FC<FeedContainerProps> = ({ adSize, sortOption }) => 
         items = [...feedItems];
         break;
     }
+    
     setSortedFeedItems(items);
   }, [feedItems, sortOption, isLoading]);
 
@@ -62,41 +62,34 @@ const FeedContainer: React.FC<FeedContainerProps> = ({ adSize, sortOption }) => 
   };
 
   const feedCSS = `
+    /* Base grid styles */
     .feed-grid {
-      column-count: 1;
       column-gap: 1rem;
     }
-    
-    .ad-size-wrapper.ad-size-large .feed-grid { column-count: 2; }
-    @media (max-width: 768px) {
-      .ad-size-wrapper.ad-size-large .feed-grid { column-count: 1; }
-    }
-    
-    .ad-size-wrapper.ad-size-medium .feed-grid { column-count: 3; }
-    @media (max-width: 1024px) {
-      .ad-size-wrapper.ad-size-medium .feed-grid { column-count: 2; }
-    }
-    @media (max-width: 768px) {
-      .ad-size-wrapper.ad-size-medium .feed-grid { column-count: 1; }
-    }
-    
-    .ad-size-wrapper.ad-size-small .feed-grid { column-count: 4; }
-     @media (max-width: 1024px) {
-      .ad-size-wrapper.ad-size-small .feed-grid { column-count: 3; }
-    }
-    @media (max-width: 768px) {
-      .ad-size-wrapper.ad-size-small .feed-grid { column-count: 2; }
-    }
-
     .feed-grid > * {
       break-inside: avoid;
       margin-bottom: 1rem;
     }
+
+    /* Small size -> more columns for higher density */
+    .ad-size-small .feed-grid { column-count: 2; }
+    @media (min-width: 768px) { .ad-size-small .feed-grid { column-count: 3; } }
+    @media (min-width: 1024px) { .ad-size-small .feed-grid { column-count: 4; } }
+    @media (min-width: 1280px) { .ad-size-small .feed-grid { column-count: 5; } }
+
+    /* Medium size -> default columns */
+    .ad-size-medium .feed-grid { column-count: 1; }
+    @media (min-width: 768px) { .ad-size-medium .feed-grid { column-count: 2; } }
+    @media (min-width: 1024px) { .ad-size-medium .feed-grid { column-count: 3; } }
+
+    /* Large size -> fewer columns for larger items */
+    .ad-size-large .feed-grid { column-count: 1; }
+    @media (min-width: 1024px) { .ad-size-large .feed-grid { column-count: 2; } }
     
     /* Active Card Glassmorphic Styles */
     .ad-card-active, .auction-card-active {
         transform: scale(1.05);
-        background: rgba(229, 231, 235, 0.6); /* Light blue-gray tint */
+        background: rgba(229, 231, 235, 0.6);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
         border: 1px solid rgba(255, 255, 255, 0.3);
@@ -119,44 +112,21 @@ const FeedContainer: React.FC<FeedContainerProps> = ({ adSize, sortOption }) => 
   if (isLoading) {
     return <div className="text-center text-maz-text-secondary py-10">Loading Feed...</div>;
   }
-  
-  const adItems = sortedFeedItems.filter(item => item.type === 'ad' || item.type === 'paid');
-  const otherItems = sortedFeedItems.filter(item => item.type !== 'ad' && item.type !== 'paid');
 
   return (
-    <div className={`ad-size-wrapper ad-size-${adSize}`}>
+    <div className={`ad-size-${adSize}`}>
       <style>{feedCSS}</style>
       
-      {otherItems.length > 0 && (
-        <div className="feed-grid">
-          {otherItems.map(item => (
-            <FeedCard
-              key={item.id}
-              item={item}
-              isActive={activeCardId === item.id}
-              onClick={() => handleCardClick(item.id)}
-            />
-          ))}
-        </div>
-      )}
-      
-      {adItems.length > 0 && (
-        <div className="mt-8">
-            <h2 className="text-2xl font-bold text-maz-text mb-4">Latest Listings</h2>
-            <Masonry
-                items={adItems}
-                adSize={adSize}
-                ease="power3.out"
-                duration={0.75}
-                stagger={0.06}
-                animateFrom="bottom"
-                scaleOnHover={true}
-                hoverScale={1.03}
-                blurToFocus={true}
-                colorShiftOnHover={false}
-            />
-        </div>
-      )}
+      <div className="feed-grid">
+        {sortedFeedItems.map(item => (
+          <FeedCard
+            key={item.id}
+            item={item}
+            isActive={activeCardId === item.id}
+            onClick={() => handleCardClick(item.id)}
+          />
+        ))}
+      </div>
     </div>
   );
 };

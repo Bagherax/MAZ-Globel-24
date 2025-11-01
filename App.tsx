@@ -4,9 +4,11 @@ import AiChat from './features/AiChat/AiChat';
 import AdGallery from './features/AdGallery/AdGallery';
 import FeedContainer from './features/Feed/FeedContainer';
 import FloatingNav from './features/FloatingNav/FloatingNav';
+import ChatPopup from './features/Chat/ChatPopup';
 
 const App: React.FC = () => {
   const [isTradingFeedVisible, setIsTradingFeedVisible] = useState(false);
+  const [isChatVisible, setIsChatVisible] = useState(false);
   const [adSize, setAdSize] = useState<'small' | 'medium' | 'large'>('medium');
   const [sortOption, setSortOption] = useState<string>('popular');
   const [theme, setTheme] = useState<'light' | 'dark'>(
@@ -30,6 +32,10 @@ const App: React.FC = () => {
   const toggleTradingFeed = () => {
     setIsTradingFeedVisible(!isTradingFeedVisible);
   };
+
+  const toggleChat = () => {
+    setIsChatVisible(!isChatVisible);
+  };
   
   const handleAdSizeChange = (size: 'small' | 'medium' | 'large') => {
     setAdSize(size);
@@ -41,7 +47,7 @@ const App: React.FC = () => {
 
   return (
     <>
-      <div className="min-h-screen bg-maz-bg font-sans flex flex-col items-center p-4 sm:p-6 md:p-8 relative pt-24">
+      <div className="min-h-screen bg-maz-bg font-sans flex flex-col items-center px-4 sm:px-6 md:px-8 pb-4 sm:pb-6 md:pb-8 relative">
         {/* Fixed Top Header */}
         <header className="fixed top-0 left-0 right-0 w-full z-40">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 flex justify-center items-center h-20">
@@ -49,10 +55,8 @@ const App: React.FC = () => {
           </div>
         </header>
         
-        {/* AdGallery now has margin-top to maintain spacing after FloatingNav was made fixed */}
-        <div className="mt-10">
-          <AdGallery />
-        </div>
+        {/* AdGallery now sits directly under the header */}
+        <AdGallery />
         
         <main className="w-full max-w-6xl">
           <FeedContainer adSize={adSize} sortOption={sortOption} />
@@ -66,6 +70,7 @@ const App: React.FC = () => {
       {/* FloatingNav now handles the trading feed toggle */}
       <FloatingNav 
         onTradingClick={toggleTradingFeed} 
+        onChatClick={toggleChat}
         onAdSizeChange={handleAdSizeChange}
         onThemeToggle={toggleTheme}
         onSortChange={handleSortChange}
@@ -74,7 +79,7 @@ const App: React.FC = () => {
       {/* Trading Feed Overlay */}
       {isTradingFeedVisible && (
         <div 
-          className="fixed inset-0 bg-black bg-opacity-60 z-40 flex items-center justify-center p-4 animate-fade-in"
+          className="fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center p-4 animate-fade-in"
           onClick={toggleTradingFeed}
         >
           <div 
@@ -102,6 +107,21 @@ const App: React.FC = () => {
               animation: fade-in 0.3s ease-out forwards;
             }
           `}</style>
+        </div>
+      )}
+
+      {/* Chat Popup Overlay */}
+      {isChatVisible && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center p-4 animate-fade-in"
+          onClick={toggleChat}
+        >
+          <div 
+            className="relative"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <ChatPopup onClose={toggleChat} />
+          </div>
         </div>
       )}
     </>
